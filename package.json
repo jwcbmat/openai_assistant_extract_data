@@ -1,0 +1,33 @@
+{
+  "name": "webhook-mailman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "npx nodemon -x \"ncc run\" -w \"src/**/*.(js|ts)\"",
+    "build": "ncc build -m src/lambda.ts && cp ./wiseid-dev.json ./dist/wiseid-dev.json",
+    "deploy": "rm -rf lambda.zip && (cd dist/ && zip -r - ./) > lambda.zip && aws lambda update-function-code --function-name webhookHandler --zip-file fileb://lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@codegenie/serverless-express": "^4.16.0",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "firebase-admin": "^13.0.1",
+    "openai": "^4.76.0",
+    "source-map-support": "^0.5.21"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@vercel/ncc": "^0.38.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
