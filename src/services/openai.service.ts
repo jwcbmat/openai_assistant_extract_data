@@ -18,8 +18,8 @@ export class OpenAIService {
 
     const operatorToAssistantId: { [key: string]: string } = {
       'assistant_00': process.env.X_OPENAI_ASSISTANT as string,
-      'assistant_01': process.env.Y_TIM_OPENAI_ASSISTANT as string,
-      'assistant_02': process.env.Z_CLARO_OPENAI_ASSISTANT as string,
+      'assistant_01': process.env.Y_OPENAI_ASSISTANT as string,
+      'assistant_02': process.env.Z_OPENAI_ASSISTANT as string,
     };
 
     return operatorToAssistantId[data.operator.toLowerCase()] || process.env.DEFAULT_OPENAI_ASSISTANT as string;
